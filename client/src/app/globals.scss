@@ -3,7 +3,7 @@ body {
 	margin: 0;
 	padding: 0;
 	user-select: auto;
-	background: var(--primary);
+	background: var(--white);
 	font-family: var(--font-family-roboto);
 	-webkit-tap-highlight-color: rgb(255 255 255 / 0%);
 	-webkit-tap-highlight-color: transparent;
@@ -42,6 +42,10 @@ a {
 
 :root {
 	--primary: #FF5834;
+	--white: #FFF;
+	--dark: #1F1F1F;
+	--light: #DDD;
+	--darkLight: #6B6B6B;
 	--error: #FF1500;
 	--font-family-roboto: 'Roboto', sans-serif;
 }

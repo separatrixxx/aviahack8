@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
+import styles from './layout.module.scss';
+
 import './globals.scss';
+
 
 const roboto = Roboto({
     subsets: ['latin', 'cyrillic'],
@@ -12,7 +15,7 @@ export const metadata: Metadata = {
     title: 'Aviahack8',
     description: 'Aviahack8',
     icons: {
-        icon: './favicon.ico',
+        icon: '/icons/favicon.ico',
     },
 };
 
@@ -24,7 +27,9 @@ export default function RootLayout({
     return (
         <html lang='en' className={`${roboto.variable}`}>
             <body>
-                {children}
+                <main className={styles.layout}>
+                    {children}
+                </main>
             </body>
         </html>
     );
