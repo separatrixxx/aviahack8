@@ -4,10 +4,11 @@ import { clickListener } from './metrics/clicks';
 import { fcpListener } from './metrics/fcp';
 import { lcpListener } from './metrics/lcp';
 import { startEventLogger } from './utils/logger';
+import { pageTimeListener } from './metrics/pageTime';
 
 
 export function crawlerCore(props: CoreProps = {}) {
-    const { modules, selectors, delayToLocalStore } = props;
+    const { modules, selectors, delayToLocalStore, targetPages } = props;
 
     const isEnabled = (key: keyof Module) => modules === undefined || modules[key];
 
@@ -21,6 +22,10 @@ export function crawlerCore(props: CoreProps = {}) {
 
     if (isEnabled('lcp')) {
         lcpListener();
+    }
+
+    if (isEnabled('pageTime')) {
+        pageTimeListener(targetPages);
     }
 
     startEventLogger(delayToLocalStore);

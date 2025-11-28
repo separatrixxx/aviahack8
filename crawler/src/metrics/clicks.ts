@@ -52,6 +52,10 @@ export function clickListener(selectors?: string[]) {
         conductor('click', clicksData);
     }
 
+    if (typeof document === 'undefined') {
+        return;
+    }
+
     document.addEventListener('click', handleClick);
 
     return () => {

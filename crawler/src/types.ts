@@ -9,6 +9,7 @@ export interface CoreProps {
     modules?: Module;
     selectors?: string[];
     delayToLocalStore?: number;
+    targetPages?: string[];
 }
 
 export interface CommonData {
@@ -20,6 +21,11 @@ export interface CommonData {
 export interface Meta {
     url: string;
     timestamp: string;
+}
+
+export interface PageTimeData {
+    meta: Meta;
+    pageTime: number;
 }
 
 export interface FcpData {

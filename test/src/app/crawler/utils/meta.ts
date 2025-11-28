@@ -1,4 +1,5 @@
-import { Meta } from './types';
+import type { Meta } from '../types';
+
 import { format } from 'date-fns';
 
 export function getMeta(): Meta {

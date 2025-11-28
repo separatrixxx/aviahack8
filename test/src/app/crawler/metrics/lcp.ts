@@ -1,6 +1,7 @@
-import { conductor } from './conductor';
-import { getMeta } from './meta';
-import { LcpData } from './types';
+import type { LcpData } from '../types';
+
+import { conductor } from '../conductor';
+import { getMeta } from '../utils/meta';
 
 
 let lcpListenerInitialized = false;
@@ -12,7 +13,7 @@ export function lcpListener() {
 
     lcpListenerInitialized = true;
 
-    if (!('PerformanceObserver' in window)) {
+    if (typeof window === 'undefined' || !('PerformanceObserver' in window)) {
         return;
     }
 

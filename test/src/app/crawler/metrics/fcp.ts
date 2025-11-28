@@ -1,6 +1,7 @@
-import { conductor } from './conductor';
-import { getMeta } from './meta';
-import { FcpData } from './types';
+import type { FcpData } from '../types';
+
+import { conductor } from '../conductor';
+import { getMeta } from '../utils/meta';
 
 
 let fcpListenerInitialized = false;
@@ -12,7 +13,7 @@ export function fcpListener() {
 
     fcpListenerInitialized = true;
 
-    if (!('PerformanceObserver' in window)) {
+    if (typeof window === 'undefined' || !('PerformanceObserver' in window)) {
         return;
     }
 

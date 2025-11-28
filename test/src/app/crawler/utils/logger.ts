@@ -1,4 +1,4 @@
-import { useEventStore } from "./storage";
+import { useEventStore } from '../storage/storage';
 
 
 function runEachMinute(fn: () => void, seconds: number) {

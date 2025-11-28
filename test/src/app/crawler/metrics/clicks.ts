@@ -1,6 +1,7 @@
-import { conductor } from './conductor';
-import { ClickData } from './types';
-import { getMeta } from './meta';
+import type { ClickData } from '../types';
+
+import { conductor } from '../conductor';
+import { getMeta } from '../utils/meta';
 
 
 function getComputedCssProperties(style: CSSStyleDeclaration): Record<string, string> {
@@ -49,6 +50,10 @@ export function clickListener(selectors?: string[]) {
         };
 
         conductor('click', clicksData);
+    }
+
+    if (typeof document === 'undefined') {
+        return;
     }
 
     document.addEventListener('click', handleClick);

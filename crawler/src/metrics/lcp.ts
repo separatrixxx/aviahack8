@@ -13,7 +13,7 @@ export function lcpListener() {
 
     lcpListenerInitialized = true;
 
-    if (!('PerformanceObserver' in window)) {
+    if (typeof window === 'undefined' || !('PerformanceObserver' in window)) {
         return;
     }
 
