@@ -1,4 +1,5 @@
 import { useEventStore } from '../storage/storage';
+import { sender } from './sender';
 
 
 function runEachMinute(fn: () => void, seconds: number) {
@@ -17,6 +18,7 @@ export function startEventLogger(seconds = 60) {
 
         if (state.events.length > 0) {
             console.log(state.events);
+            sender(state.events);
             state.clearEvents();
         }
     }, seconds);

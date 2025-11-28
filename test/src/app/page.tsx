@@ -5,7 +5,10 @@ import { crawlerCore } from "./crawler/core";
 
 export default function Home() {
     crawlerCore({
-        selectors: ['[class$="button3"]'],
+        selectors: {
+            targeted: ['[class$="button3"]'],
+            tracked: ['button'],
+        },
         delayToLocalStore: 5,
         modules: {
             clicks: true,

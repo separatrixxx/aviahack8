@@ -1,3 +1,10 @@
+export interface EventData {
+    type: string;
+    data: EventType[];
+}
+
+export type EventType = ClickData | LcpData | FcpData | PageTimeData;
+
 export interface Module {
     clicks?: boolean;
     fcp?: boolean;
@@ -5,17 +12,16 @@ export interface Module {
     pageTime?: boolean;
 };
 
+export interface Selectors {
+    targeted: string[];
+    tracked: string[];
+};
+
 export interface CoreProps {
     modules?: Module;
-    selectors?: string[];
+    selectors?: Selectors;
     delayToLocalStore?: number;
     targetPages?: string[];
-}
-
-export interface CommonData {
-    clicks?: ClickData[];
-    fcp?: FcpData[];
-    lcp?: LcpData[];
 }
 
 export interface Meta {
@@ -40,10 +46,11 @@ export interface LcpData {
 
 export interface ClickData {
     meta: Meta;
-    element: HTMLElement;
+    isTarget: boolean;
+    element: string;
     className: string;
     inlineStyles: string | null;
-    cssStyles: Record<string, string>;
+    // cssStyles: Record<string, string>;
     cursorCoords: {
         x: number;
         y: number;

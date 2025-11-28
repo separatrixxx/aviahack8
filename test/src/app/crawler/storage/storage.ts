@@ -1,13 +1,11 @@
+import type { EventData } from '../types';
+
 import { create } from 'zustand';
 
-export interface TypedEvent<T = unknown> {
-    type: string;
-    data: T;
-}
 
-interface DataState {
-    events: TypedEvent[];
-    addEvent: (event: TypedEvent) => void;
+export interface DataState {
+    events: EventData[];
+    addEvent: (event: EventData) => void;
     clearEvents: () => void;
 }
 

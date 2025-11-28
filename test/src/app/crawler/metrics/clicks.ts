@@ -1,10 +1,10 @@
-import type { ClickData } from '../types';
+import type { ClickData, Selectors } from '../types';
 
 import { conductor } from '../conductor';
 import { getMeta } from '../utils/meta';
 
 
-function getComputedCssProperties(style: CSSStyleDeclaration): Record<string, string> {
+export function getComputedCssProperties(style: CSSStyleDeclaration): Record<string, string> {
     const result: Record<string, string> = {};
 
     for (const prop of Array.from(style)) {
@@ -20,7 +20,7 @@ function getComputedCssProperties(style: CSSStyleDeclaration): Record<string, st
 
 let clickListenerInitialized = false;
 
-export function clickListener(selectors?: string[]) {
+export function clickListener(selectors?: Selectors) {
     if (clickListenerInitialized) {
         return;
     }
@@ -30,19 +30,26 @@ export function clickListener(selectors?: string[]) {
     function handleClick(e: MouseEvent) {
         const target = e.target as HTMLElement;
 
-        if (selectors && !selectors.some(sel => target.matches(sel))) {
+        if (selectors && !selectors.tracked.some(s => target.matches(s))) {
             return;
         }
 
         const cssStyles = window.getComputedStyle(target);
         const meta = getMeta();
 
+        let isTarget = true;
+
+        if (!selectors || !selectors.targeted.some(s => target.matches(s))) {
+            isTarget = false;
+        }
+
         const clicksData: ClickData = {
             meta,
-            element: target,
+            isTarget,
+            element: target.tagName,
             className: target.className,
             inlineStyles: target.getAttribute('style'),
-            cssStyles: getComputedCssProperties(cssStyles),
+            // cssStyles: getComputedCssProperties(cssStyles),
             cursorCoords: {
                 x: e.clientX,
                 y: e.clientY,
