@@ -1,8 +1,6 @@
-import type { EventType } from './types';
-
 import { useEventStore } from './storage/storage';
 
 
-export function conductor<T = unknown>(type: string, data: EventType[]) {
+export function conductor(type: string, data: any) {
     useEventStore.getState().addEvent({ type, data });
 }
