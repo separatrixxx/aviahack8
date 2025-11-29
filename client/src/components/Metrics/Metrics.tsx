@@ -5,7 +5,7 @@ import type { FcpData, LcpData } from '@/types/metrics.interface';
 import styles from './Metrics.module.scss';
 import { useState } from 'react';
 import { useMetricsStore } from '@/storage/metrics';
-import { getMinuteKey } from '@/utils/date';
+import { getDateKey } from '@/utils/date';
 import { MetricDisplay } from '../MetricDisplay/MetricDisplay';
 import { StatisticBar } from '../StatisticBar/StatisticBar';
 import { TimilineRow } from '../TimilineRow/TimilineRow';
@@ -29,19 +29,19 @@ export const Metrics = () => {
 
     const clicks = metricsGroup.metrics.filter(e => e.type === 'click') as any[];
 
-    const minutes: Record<string, any[]> = {};
+    const dates: Record<string, any[]> = {};
 
     for (const c of clicks) {
-        const minute = getMinuteKey(c.data.meta.timestamp);
+        const date = getDateKey(c.data.meta.timestamp);
 
-        if (!minutes[minute]) {
-            minutes[minute] = [];
+        if (!dates[date]) {
+            dates[date] = [];
         }
         
-        minutes[minute].push(c.data);
+        dates[date].push(c.data);
     }
 
-    const minuteKeys = Object.keys(minutes).sort();
+    const dateKeys = Object.keys(dates).sort();
 
     return (
         <div className={styles.metrics}>
@@ -54,8 +54,8 @@ export const Metrics = () => {
                     Статистика кликов
                 </h3>
                 <>
-                    {minuteKeys.map((minute, i) => {
-                        const events = minutes[minute];
+                    {dateKeys.map((date, i) => {
+                        const events = dates[date];
                         const total = events.length;
                         const target = events.filter(e => e.isTarget).length;
                         const notTarget = total - target;
@@ -63,8 +63,8 @@ export const Metrics = () => {
                         return (
                             <div key={i}>
                                <TimilineRow total={total} target={target} notTarget={notTarget}
-                                    minute={minute} expanded={expanded} setExpanded={setExpanded} />
-                                {expanded === minute && (
+                                    date={date} expanded={expanded} setExpanded={setExpanded} />
+                                {expanded === date && (
                                     <ExpandedInfo events={events} />
                                 )}
                             </div>

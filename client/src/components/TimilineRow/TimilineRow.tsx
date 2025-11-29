@@ -6,21 +6,21 @@ interface TimilineRowProps {
     total: number;
     target: number;
     notTarget: number;
-    minute: string;
+    date: string;
     expanded: string | null;
     setExpanded: (e: string | null) => void;
 }
 
 export const TimilineRow = (props: TimilineRowProps) => {
-    const { total, target, notTarget, minute, expanded, setExpanded } = props;
+    const { total, target, notTarget, date, expanded, setExpanded } = props;
 
     return (
         <div className={styles.timelineRow}
             title='Кликните для подробностей'
-            onClick={() => setExpanded(expanded === minute ? null : minute)}
+            onClick={() => setExpanded(expanded === date ? null : date)}
         >
             <span>
-                {minute.slice(11)}
+                {date}
             </span>
             <StatisticBar total={total} target={target} notTarget={notTarget} />
             <span>
