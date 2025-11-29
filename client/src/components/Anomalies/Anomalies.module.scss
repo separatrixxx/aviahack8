@@ -1,0 +1,38 @@
+.anomalies {
+    display: grid;
+    width: 50%;
+    gap: 12px;
+    margin-top: 12px;
+
+    .isAnomaly {
+        font-weight: 500;
+        color: var(--darlLight);
+
+        .good {
+            font-weight: 600;
+            color: var(--goodBar);
+        }
+
+        .bad {
+            color: var(--badBar);
+        }
+    }
+
+    .explanation {
+        color: var(--darlLight);
+        font-size: 14;
+        line-height: 18px;
+    }
+}
+
+@media (max-width: 1400px) {
+	.anomalies {
+        width: 70%;
+    }
+}
+
+@media (max-width: 700px) {
+	.anomalies {
+        width: 90%;
+    }
+}

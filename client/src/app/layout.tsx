@@ -1,6 +1,7 @@
+import styles from './layout.module.scss';
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
-import styles from './layout.module.scss';
+import { Header } from '@/components/Header/Header';
 
 import './globals.scss';
 
@@ -28,6 +29,7 @@ export default function RootLayout({
         <html lang='en' className={`${roboto.variable}`}>
             <body>
                 <main className={styles.layout}>
+                    <Header />
                     {children}
                 </main>
             </body>

@@ -1,9 +1,10 @@
 .metricDisplay {
     display: grid;
-    padding: 8px 24px;
-    font-weight: 600;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 600 !important;
     background: var(--good);
-    border: 2px solid var(--darkGood);
+    border: 1px solid var(--darkGood);
     color: var(--dark);
     border-radius: 8;
 }

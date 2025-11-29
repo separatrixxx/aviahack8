@@ -1,0 +1,58 @@
+.topFeatures {
+    display: grid;
+    width: 100%;
+    gap: 24px;
+    align-items: center;
+}
+
+.feature {
+    display: grid;
+    justify-items: left;
+    grid-template-columns: 30% 1fr;
+    align-items: center;
+}
+
+.left {
+    display: grid;
+    justify-items: left;
+    gap: 8px;
+}
+
+.name {
+    font-size: 14px;
+    color: var(--darkLight);
+}
+
+.value {
+    font-size: 16px;
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.barWrap {
+    display: grid;
+    width: 100%;
+    background: var(--light);
+    border-radius: 8px;
+    height: 14px;
+    margin-left: 16px;
+    overflow: hidden;
+}
+
+.barPositive {
+    height: 100%;
+    background: var(--darkGood);
+    transition: width 0.6s;
+}
+
+.barNegative {
+    height: 100%;
+    background: var(--darkBad);
+    transition: width 0.6s;
+}
+
+.barNeutral {
+    height: 100%;
+    background: var(--light);
+    width: 100%;
+}

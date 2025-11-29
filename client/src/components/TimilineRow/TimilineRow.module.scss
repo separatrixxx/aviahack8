@@ -2,28 +2,36 @@
 
 .timelineRow {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto;
     gap: 12px;
     width: 90%;
     align-items: center;
-    cursor: pointer;
-    padding: 12px 8px;
-    border-radius: 4px;
+    padding: 24px 8px;
+    border-radius: 8px;
+    border-bottom: 1px solid var(--light);
 
-    @include shared.transition;
-    @include shared.brightnessBackground;
+    .date {
+        font-size: 16px;
+        font-weight: 500;
+    }
 
     span {
+        font-size: 14px;
         font-weight: 400;
     }
 }
 
-.timelineRow:not(:last-child) {
-    border-bottom: 1px solid var(--light);
+.isBrightness {
+    cursor: pointer;
+
+    @include shared.transition;
+    @include shared.brightnessBackground;
 }
 
-@media (max-width: 580px) {
-    .timelineRow {
-        grid-template-columns: auto;
-    }
+.lcpSection {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-items: left;
+    align-items: center;
+    gap: 12px
 }

@@ -1,14 +1,14 @@
-import { Header } from "@/components/Header/Header";
-import { Metrics } from "@/components/Metrics/Metrics";
-import { SelectProject } from "@/components/SelectProject/SelectProject";
+'use client'
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 
 export default function Home() {
-    return (
-        <>
-            <Header />
-            <SelectProject />
-            <Metrics />
-        </>
-    );
+    const router = useRouter();
+
+    useEffect(() => {
+        router.push('/analysis');
+    }, [router]);
+
+    return null;
 }

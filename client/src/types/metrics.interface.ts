@@ -37,3 +37,11 @@ export interface MetricGroup {
     created_at: string;
     updated_at: string;
 }
+
+export type GroupedMetrics = {
+    [date: string]: {
+        clicks: any[];
+        fcps: number[];
+        lcps: number[];
+    }
+};

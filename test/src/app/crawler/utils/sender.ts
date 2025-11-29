@@ -11,7 +11,7 @@ export async function sender(data: EventData[]) {
     const url = window.location.origin; 
 
     try {
-        await axios.post('http://localhost:8000/api/v1/metrics/', {
+        await axios.post('https://aviahack8-core.vercel.app/api/v1/metrics/', {
             url,
             metrics: data,
         });
