@@ -10,8 +10,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:3000", 
         "http://localhost:3001",
-        "https://aviahack8.vercel.app/",
-        "https://aviahack8-test.vercel.app/"
+        "https://aviahack8.vercel.app",
+        "https://aviahack8-test.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
