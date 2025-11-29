@@ -1,0 +1,22 @@
+$transition-duration: 300ms;
+$transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+$brightness: 0.95;
+$brightnessBackground: var(--light);
+
+@mixin transition($properties: all, $duration: $transition-duration, $timing: $transition-timing) {
+	transition: $properties $duration $timing;
+}
+
+@mixin brightness($brightness: $brightness) {
+	&:hover,
+	&:active {
+		filter: brightness($brightness);
+	}
+}
+
+@mixin brightnessBackground($brightnessBackground: $brightnessBackground) {
+	&:hover,
+	&:active {
+		background: $brightnessBackground;
+	}
+}

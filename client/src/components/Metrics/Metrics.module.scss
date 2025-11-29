@@ -1,0 +1,26 @@
+.metrics {
+    display: grid;
+    width: 50%;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.lcpSection {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-items: left;
+    align-items: center;
+    gap: 12px
+}
+
+@media (max-width: 1024px) {
+	.metrics {
+        width: 70%;
+    }
+}
+
+@media (max-width: 580px) {
+	.metrics {
+        width: 90%;
+    }
+}

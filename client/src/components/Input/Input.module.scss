@@ -1,0 +1,16 @@
+@use '../../app/shared';
+
+.input {
+    width: calc(100% - 24px);
+    padding: 0 12px;
+    height: 32px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: var(--light);
+    color: var(--dark);
+    font-weight: 500;
+
+    @include shared.transition(filter);
+	@include shared.brightness;
+}

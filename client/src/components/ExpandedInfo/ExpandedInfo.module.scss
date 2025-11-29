@@ -1,0 +1,21 @@
+.expandedInfo {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 8px;
+    width: calc(100% - 8px);
+    border-radius: 8px;
+    background: var(--good);
+    padding: 12px;
+    margin: 12px 0;
+
+    div {
+        display: grid;
+        grid-template-columns: auto auto 1fr;
+        gap: 8px;
+        align-items: center;
+    }
+}
+
+.bad {
+    background: var(--bad);
+}

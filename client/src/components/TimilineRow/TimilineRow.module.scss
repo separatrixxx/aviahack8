@@ -1,0 +1,29 @@
+@use '../../app/shared';
+
+.timelineRow {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    width: 90%;
+    align-items: center;
+    cursor: pointer;
+    padding: 12px 8px;
+    border-radius: 4px;
+
+    @include shared.transition;
+    @include shared.brightnessBackground;
+
+    span {
+        font-weight: 400;
+    }
+}
+
+.timelineRow:not(:last-child) {
+    border-bottom: 1px solid var(--light);
+}
+
+@media (max-width: 580px) {
+    .timelineRow {
+        grid-template-columns: auto;
+    }
+}

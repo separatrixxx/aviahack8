@@ -1,0 +1,23 @@
+.statisticBar {
+    display: inline-flex;
+    width: 90%;
+    min-width: 50px;
+    height: 16px;
+    background: var(--white);
+    overflow: hidden;
+    border-radius: 8px;
+    vertical-align: middle;
+}
+
+.bar,
+.badBar {
+    height: 16px;
+}
+
+.goodBar {
+    background: var(--goodBar);
+}
+
+.badBar {
+    background: var(--badBar);
+}

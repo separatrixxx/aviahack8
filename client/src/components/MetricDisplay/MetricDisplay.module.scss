@@ -1,0 +1,14 @@
+.metricDisplay {
+    display: grid;
+    padding: 8px 24px;
+    font-weight: 600;
+    background: var(--good);
+    border: 2px solid var(--darkGood);
+    color: var(--dark);
+    border-radius: 8;
+}
+
+.bad {
+    background: var(--bad);
+    border: 2px solid var(--darkBad);
+}

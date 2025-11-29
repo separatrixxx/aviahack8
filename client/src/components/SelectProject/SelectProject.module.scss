@@ -1,0 +1,25 @@
+.selectProject {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    width: 50%;
+    gap: 12px;
+    align-items: center;
+}
+
+@media (max-width: 1024px) {
+	.selectProject {
+        width: 70%;
+    }
+}
+
+@media (max-width: 580px) {
+	.selectProject {
+        width: 100%;
+    }
+}
+
+@media (max-width: 300px) {
+	.selectProject {
+        grid-template-columns: auto;
+    }
+}

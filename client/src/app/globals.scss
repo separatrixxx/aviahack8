@@ -33,7 +33,7 @@ a {
 	text-decoration: none;
 }
 
-@media (width <=480px) {
+@media (width <= 480px) {
 	::-webkit-scrollbar {
 		width: 4px;
 		height: 4px;
@@ -44,8 +44,14 @@ a {
 	--primary: #FF5834;
 	--white: #FFF;
 	--dark: #1F1F1F;
-	--light: #DDD;
+	--light: #E9E9E9;
 	--darkLight: #6B6B6B;
+	--good: #EAFFEA;
+	--darkGood: #09A323;
+	--goodBar: #20BF55;
+	--bad: #FFEAEA;
+	--darkBad: #FF3636;
+	--badBar: #FF5252;
 	--error: #FF1500;
 	--font-family-roboto: 'Roboto', sans-serif;
 }

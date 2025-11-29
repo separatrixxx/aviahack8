@@ -20,9 +20,11 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "axios": "^1.13.2",
+    "date-fns": "^4.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.0.5",
     "sass": "^1.94.2",
-    "typescript": "^5"
+    "typescript": "^5",
+    "zustand": "^5.0.8"
   }
 }
