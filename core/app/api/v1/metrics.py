@@ -49,7 +49,7 @@ async def all_metrics():
 
     return [dict(r) for r in res]
 
-@router.get("/{event_id}")
+@router.get("/metrics/{event_id}")
 async def get_metrics(event_id: int):
     query = events.select().where(events.c.id == event_id)
     row = await database.fetch_one(query)
@@ -65,7 +65,7 @@ async def delete_all():
 
     return
 
-@router.delete("/{event_id}", status_code=204)
+@router.delete("/metrics/{event_id}", status_code=204)
 async def delete_one(event_id: int):
     res = await database.execute(events.delete().where(events.c.id == event_id))
 
@@ -92,7 +92,7 @@ async def delete_metrics_by_url(url: str = Query(...)):
 @router.get("/anomaly")
 def anomaly(visit_id: str, top_n: int = 5):
     try:
-        result = get_anomaly_insight(visit_id, top_n=top_n)
+        result, llm_anomaly_explain = get_anomaly_insight(visit_id, top_n=top_n)
     except KeyError:
         raise HTTPException(status_code=404, detail="visit_id не найден")
     except Exception as e:
@@ -130,5 +130,6 @@ def anomaly(visit_id: str, top_n: int = 5):
         is_anomaly=int(result["is_anomaly"]),
         top_features=top_features,
         explanation=str(result["explanation"]),
+        llm_explanation = str(llm_anomaly_explain),
         events=events
     )

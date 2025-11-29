@@ -24,4 +24,5 @@ class AnomalyResponse(BaseModel):
     is_anomaly: bool
     top_features: List[FeatureContribution]
     explanation: str
+    llm_explanation: str
     events: List[EventDto]
