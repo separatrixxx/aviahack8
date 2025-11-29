@@ -4,6 +4,8 @@ from database.database import database
 from models.models import events
 from pydantic import BaseModel
 from sqlalchemy import func
+from app.service.inference import get_anomaly_insight
+from app.dto.anomaly_response_dto import AnomalyResponse, FeatureContribution, EventDto
 
 router = APIRouter()
 
@@ -86,3 +88,47 @@ async def delete_metrics_by_url(url: str = Query(...)):
     await database.execute(query)
 
     return
+
+@router.get("/anomaly")
+def anomaly(visit_id: str, top_n: int = 5):
+    try:
+        result = get_anomaly_insight(visit_id, top_n=top_n)
+    except KeyError:
+        raise HTTPException(status_code=404, detail="visit_id не найден")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    
+    top_features = []
+    for _, row in result["top_features"].iterrows():
+        top_features.append(
+            FeatureContribution(
+                feature=str(row["feature"]),
+                value=float(row["value"]),
+                shap_value=float(row["shap_value"])
+            )
+        )
+
+    events = []
+    for e in result["events"]:
+        events.append(
+            EventDto(
+                event_type=str(e.event_type),
+                timestamp=e.timestamp.to_pydatetime() if hasattr(e.timestamp, "to_pydatetime") else e.timestamp,
+                visit_id=str(e.visit_id),
+                client_id=str(e.client_id),
+                url=str(e.url),
+                referer=str(e.referer) if e.referer is not None else None,
+                device=dict(e.device),
+                geo=dict(e.geo),
+                traffic=dict(e.traffic),
+                additional=dict(e.additional)
+            )
+        )
+
+    return AnomalyResponse(
+        visit_id=str(result["visit_id"]),
+        is_anomaly=int(result["is_anomaly"]),
+        top_features=top_features,
+        explanation=str(result["explanation"]),
+        events=events
+    )
